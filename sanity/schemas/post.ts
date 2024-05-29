@@ -9,7 +9,7 @@ export const post = {
 			name: 'title',
 			title: 'Title',
 			type: 'string',
-			validation: (Rule: Rule) => Rule.required().error('A title is required'),
+			validation: (Rule) => Rule.required().error('A title is required'),
 		},
 		{
 			name: 'slug', // slug is the URL-friendly version of the title
@@ -18,7 +18,7 @@ export const post = {
 			options: {
 				source: 'title', // slug will be generated from the title field
 			},
-			validation: (Rule: Rule) => Rule.required().error('A slug is required'),
+			validation: (Rule) => Rule.required().error('A slug is required'),
 		},
 		{
 			name: 'publishedAt',
@@ -35,7 +35,7 @@ export const post = {
 			name: 'excerpt',
 			title: 'Excerpt',
 			type: 'text',
-			validation: (Rule: Rule) => Rule.max(200).warning('Max 200 characters'),
+			validation: (Rule) => Rule.max(200).warning('Max 200 characters'),
 		},
 		{
 			name: 'body',
