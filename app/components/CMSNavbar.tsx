@@ -7,7 +7,7 @@ const font = Lilita_One({ weight: '400', subsets: ['latin'] });
 
 export const CMSNavbar = () => {
 	return (
-		<div className='flex justify-between items-center py-1 px-5'>
+		<div className='flex justify-between items-center py-1 px-5 bg-amber-50 dark:bg-slate-950'>
 			<Link href='/'>
 				<BackArrowIcon />
 			</Link>
