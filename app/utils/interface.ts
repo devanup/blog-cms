@@ -1,6 +1,8 @@
 export interface Post {
 	title: string;
-	slug: string;
+	slug: {
+		current: string;
+	};
 	publishedAt: string;
 	excerpt: string;
 	body: any;
@@ -12,6 +14,8 @@ export interface Post {
 
 export interface Tag {
 	name: string;
-	slug: string;
+	slug: {
+		current: string;
+	};
 	_id: string;
 }
