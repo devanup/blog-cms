@@ -1,24 +1,23 @@
+import { Rule } from 'sanity';
+
 export const post = {
 	name: 'post',
 	title: 'Post',
 	type: 'document',
 
-	// fields for post schema
 	fields: [
 		{
 			name: 'title',
 			title: 'Title',
 			type: 'string',
-			validation: (Rule: any) => Rule.required().error('A title is required'),
+			validation: (Rule: Rule) => Rule.required().error('Required'),
 		},
 		{
-			name: 'slug', // slug is the URL-friendly version of the title
+			name: 'slug',
 			title: 'Slug',
-			type: 'slug', // slug type is a type from Sanity
-			options: {
-				source: 'title', // slug will be generated from the title field
-			},
-			validation: (Rule: any) => Rule.required().error('A slug is required'),
+			type: 'slug',
+			options: { source: 'title' },
+			validation: (Rule: Rule) => Rule.required().error('Required'),
 		},
 		{
 			name: 'publishedAt',
@@ -26,16 +25,11 @@ export const post = {
 			type: 'datetime',
 			initialValue: () => new Date().toISOString(),
 		},
-		// {
-		// 	name: 'mainImage',
-		// 	title: 'Main image',
-		// 	type: 'image',
-		// },
 		{
 			name: 'excerpt',
 			title: 'Excerpt',
 			type: 'text',
-			validation: (Rule: any) => Rule.max(200).warning('Max 200 characters'),
+			validation: (Rule: Rule) => Rule.max(200).error('Max 200 characters'),
 		},
 		{
 			name: 'body',
@@ -45,14 +39,7 @@ export const post = {
 				{ type: 'block' },
 				{
 					type: 'image',
-					fields: [
-						{
-							type: 'text',
-							name: 'alt',
-							title: 'Alternative text',
-							options: { isHighlighted: true },
-						},
-					],
+					fields: [{ type: 'text', name: 'alt', title: 'Alt' }],
 				},
 			],
 		},
@@ -60,13 +47,7 @@ export const post = {
 			name: 'tags',
 			title: 'Tags',
 			type: 'array',
-			of: [
-				{
-					// array of references to tags
-					type: 'reference',
-					to: [{ type: 'tag' }],
-				},
-			],
+			of: [{ type: 'reference', to: [{ type: 'tag' }] }],
 		},
 	],
 };

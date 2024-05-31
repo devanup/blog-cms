@@ -13,7 +13,8 @@ export const CMSNavbar = () => {
 			</Link>
 			<div className={`${font.className} text-3xl dark:text-amber-50`}>
 				Dev
-				<span className='text-purple-500'>Blook</span>
+				<span className='text-purple-500'>Space</span>
+				<sup className='text-sm'> CMS</sup>
 			</div>
 		</div>
 	);
