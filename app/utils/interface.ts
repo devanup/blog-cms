@@ -18,4 +18,5 @@ export interface Tag {
 		current: string;
 	};
 	_id: string;
+	postCount: number;
 }

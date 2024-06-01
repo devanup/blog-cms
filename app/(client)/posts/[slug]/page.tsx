@@ -7,6 +7,7 @@ import { VT323 } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { notFound } from 'next/navigation';
 
 const dateFont = VT323({ weight: '400', subsets: ['latin'] });
 
@@ -36,11 +37,16 @@ async function getPost(slug: string) {
 	return post;
 }
 
+export const revalidate = 60; // NextJS automatically does the caching for us. This will revalidate the page every 60 seconds to get the latest data.
+
 const page = async ({ params }: Params) => {
 	// Every route has its own params object. slug is contained in the params object.
 	const post: Post = await getPost(params?.slug);
 	// console.log('The post: ', post);
-	console.log('Body: ', post?.body);
+	// console.log('Body: ', post?.body);
+	if (!post) {
+		return notFound();
+	}
 	return (
 		<div>
 			<Header title={post?.title} />
